@@ -15,3 +15,5 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use('/missions', missionsRouter);
 
 app.listen(port, () => console.info(`Server is running on port ${port}`));
+
+export default app;

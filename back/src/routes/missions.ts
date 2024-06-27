@@ -6,5 +6,5 @@ export const missionsRouter = Router();
 
 missionsRouter.get('/', (req, res) => {
   const missions: Mission[] = getMissions();
-  res.send(missions);
+  res.status(200).send(missions);
 });
