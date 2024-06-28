@@ -1,0 +1,16 @@
+.verticalLine {
+  width: 1.5px;
+  background-color: #d3d3d3;
+  margin: 10px 0 10px 8px;
+}
+
+.bloomerDetails {
+  display: flex;
+}
+
+.textBloomer {
+  color: #979797;
+  font-size: 16px;
+  padding-left: 30px;
+  margin: 0;
+}
