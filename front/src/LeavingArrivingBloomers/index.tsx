@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { MissionByDate } from '../types';
 import BloomerDateList from '../BloomerDateList';
 import './style.css';
@@ -5,6 +6,7 @@ import './style.css';
 interface LeavingArrivingBloomers {
   arrivingBloomers: MissionByDate;
   leavingBloomers: MissionByDate;
+  closeList: () => void;
 }
 
 const filterBloomersByDate = (bloomers: MissionByDate) => {
@@ -24,14 +26,25 @@ const filterBloomersByDate = (bloomers: MissionByDate) => {
 const LeavingArrivingBloomers = ({
   arrivingBloomers,
   leavingBloomers,
+  closeList,
 }: LeavingArrivingBloomers) => {
+  const [isVisible, setIsVisible] = useState(true);
   const filteredBloomersByArrivingDate = filterBloomersByDate(arrivingBloomers);
   const filteredBloomersByLeavingDate = filterBloomersByDate(leavingBloomers);
 
+  const closeButton = () => {
+    setIsVisible(false);
+    closeList();
+  };
+
+  if (!isVisible) {
+    return false;
+  }
+
   return (
-    <div className="centerWrapper">
+    <div className="centerWrapper" data-testid="list">
       <div className="container">
-        <div className="closeButton"></div>
+        <div className="closeButton" onClick={closeButton}></div>
         <div className="scrollContent">
           <div className="bloomerListContainer">
             <BloomerDateList
