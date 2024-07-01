@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import LeavingArrivingBloomers from '../LeavingArrivingBloomers';
 import { MissionByDate } from '../types';
+import './style.css';
 
 const Home = () => {
   const [displayList, setDisplayList] = useState(false);
@@ -23,8 +24,8 @@ const Home = () => {
           closeList={handleCloseList}
         />
       ) : (
-        <button className="displayList" onClick={handleDisplayList}>
-          Display list of bloomers
+        <button className="buttonDisplayList" onClick={handleDisplayList}>
+          Afficher la liste des bloomers
         </button>
       )}
     </>

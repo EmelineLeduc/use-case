@@ -3,13 +3,13 @@ import './style.css';
 
 interface BloomerListProps {
   bloomers: MissionInfo[];
-  showVerticalLine: boolean; // Nouvelle prop
+  showVerticalLine: boolean;
 }
 
 const BloomerList = ({ bloomers, showVerticalLine }: BloomerListProps) => {
-  const verticalLineHeight = bloomers.length * 30;
+  const verticalLineHeight = bloomers.length * 35;
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div className="bloomerDetails">
       {showVerticalLine && (
         <div
           className="verticalLine"
@@ -18,7 +18,7 @@ const BloomerList = ({ bloomers, showVerticalLine }: BloomerListProps) => {
       )}
       <div>
         {bloomers.map((bloomer) => (
-          <div key={bloomer.id} className="bloomerDetails">
+          <div key={bloomer.id}>
             <p
               className="textBloomer"
               style={{ marginLeft: showVerticalLine ? '0' : '10px' }}

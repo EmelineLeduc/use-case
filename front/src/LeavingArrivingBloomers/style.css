@@ -1,18 +1,12 @@
-.centerWrapper {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-}
-
-.container {
-  border: 1px solid #8e8e8e;
+  border: 2px solid #9e9e9e;
   border-radius: 8px;
   height: 60%;
-  width: 30%;
+  width: 320px;
   position: relative;
-  padding: 0;
 }
 
 .closeButton {
@@ -46,18 +40,16 @@
 }
 
 .scrollContent { 
-  width: 100%;
   overflow-y: auto; 
-  flex-grow: 1;
-  margin: 0;
-  max-height: 100%;
+  height: 100%;
+  width: 100%;
 }
 
-.bloomerListContainer {
+.containerBloomerList {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 0 30px;
+  padding: 10px 0 30px;
 }
 
 @media (max-width: 768px) {
@@ -68,6 +60,6 @@
 
 @media (max-width: 480px) {
   .container {
-    width: 80%; 
+    width: 90%; 
   }
 }

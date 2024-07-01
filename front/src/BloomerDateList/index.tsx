@@ -1,13 +1,16 @@
 import { useMemo } from 'react';
-import './style.css';
 import { MissionByDate } from '../types';
 import BloomerList from '../BloomerList';
 import BloomerCountState from '../BloomerCountState';
-
+import './style.css';
 interface BloomerDateListProps {
   bloomerDateList: MissionByDate;
   stateBloomer: 'arriving' | 'leaving';
 }
+
+const convertDateFormat = (date: string) => {
+  return new Date(date).toLocaleDateString('fr-FR');
+};
 
 const BloomerDateList = ({
   bloomerDateList,
@@ -22,7 +25,7 @@ const BloomerDateList = ({
     [stateBloomer]
   );
   const dates = useMemo(() => Object.keys(bloomerDateList), [bloomerDateList]);
-  const lastDate = useMemo(() => dates[dates.length - 1], [dates]);
+  const lastDate = dates[dates.length - 1];
 
   return (
     <div>
@@ -31,10 +34,12 @@ const BloomerDateList = ({
         totalBloomers={totalBloomers}
       />
       {Object.entries(bloomerDateList).map(([date, bloomers]) => (
-        <div key={date}>
+        <div key={date} className="containerDateAndBloomers">
           <div className="containerCircleAndDate">
             <div className="circle"></div>
-            <p className={`textDate ${colorClass}`}>{date}</p>
+            <p className={`textDate ${colorClass}`}>
+              {convertDateFormat(date)}
+            </p>
           </div>
           <BloomerList
             bloomers={bloomers}

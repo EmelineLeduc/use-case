@@ -3,7 +3,7 @@ import { MissionByDate } from '../types';
 import BloomerDateList from '../BloomerDateList';
 import './style.css';
 
-interface LeavingArrivingBloomers {
+interface LeavingArrivingBloomersProps {
   arrivingBloomers: MissionByDate;
   leavingBloomers: MissionByDate;
   closeList: () => void;
@@ -27,7 +27,7 @@ const LeavingArrivingBloomers = ({
   arrivingBloomers,
   leavingBloomers,
   closeList,
-}: LeavingArrivingBloomers) => {
+}: LeavingArrivingBloomersProps) => {
   const [isVisible, setIsVisible] = useState(true);
   const filteredBloomersByArrivingDate = filterBloomersByDate(arrivingBloomers);
   const filteredBloomersByLeavingDate = filterBloomersByDate(leavingBloomers);
@@ -42,20 +42,18 @@ const LeavingArrivingBloomers = ({
   }
 
   return (
-    <div className="centerWrapper" data-testid="list">
-      <div className="container">
-        <div className="closeButton" onClick={closeButton}></div>
-        <div className="scrollContent">
-          <div className="bloomerListContainer">
-            <BloomerDateList
-              bloomerDateList={filteredBloomersByArrivingDate}
-              stateBloomer="arriving"
-            />
-            <BloomerDateList
-              bloomerDateList={filteredBloomersByLeavingDate}
-              stateBloomer="leaving"
-            />
-          </div>
+    <div className="container" data-testid="list">
+      <div className="closeButton" onClick={closeButton}></div>
+      <div className="scrollContent">
+        <div className="containerBloomerList">
+          <BloomerDateList
+            bloomerDateList={filteredBloomersByArrivingDate}
+            stateBloomer="arriving"
+          />
+          <BloomerDateList
+            bloomerDateList={filteredBloomersByLeavingDate}
+            stateBloomer="leaving"
+          />
         </div>
       </div>
     </div>

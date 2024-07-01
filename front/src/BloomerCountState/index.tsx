@@ -14,7 +14,7 @@ const BloomerCountState = ({
 
   return (
     <p className="text">
-      <span className={`totalBloomers ${colorClass}`}>{totalBloomers}</span>{' '}
+      <span className={`totalBloomers ${colorClass}`}>{totalBloomers}</span>
       Bloomer
       {conditionToPluralize} {bloomerStateText}
       {conditionToPluralize}
