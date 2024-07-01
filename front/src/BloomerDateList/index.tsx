@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import './style.css';
 import { MissionByDate } from '../types';
 import BloomerList from '../BloomerList';
@@ -12,8 +13,16 @@ const BloomerDateList = ({
   bloomerDateList,
   stateBloomer,
 }: BloomerDateListProps) => {
-  const totalBloomers = Object.values(bloomerDateList).flat().length;
-  const colorClass = stateBloomer === 'arriving' ? 'greenText' : 'redText';
+  const totalBloomers = useMemo(
+    () => Object.values(bloomerDateList).flat().length,
+    [bloomerDateList]
+  );
+  const colorClass = useMemo(
+    () => (stateBloomer === 'arriving' ? 'greenText' : 'redText'),
+    [stateBloomer]
+  );
+  const dates = useMemo(() => Object.keys(bloomerDateList), [bloomerDateList]);
+  const lastDate = useMemo(() => dates[dates.length - 1], [dates]);
 
   return (
     <div>
@@ -27,7 +36,10 @@ const BloomerDateList = ({
             <div className="circle"></div>
             <p className={`textDate ${colorClass}`}>{date}</p>
           </div>
-          <BloomerList bloomers={bloomers} />
+          <BloomerList
+            bloomers={bloomers}
+            showVerticalLine={date !== lastDate}
+          />
         </div>
       ))}
     </div>
