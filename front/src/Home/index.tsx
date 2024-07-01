@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LeavingArrivingBloomers from '../LeavingArrivingBloomers';
 import { MissionByDate } from '../types';
 import './style.css';
 
+interface Mission {
+  arrivingBloomers: MissionByDate;
+  leavingBloomers: MissionByDate;
+}
 const Home = () => {
   const [displayList, setDisplayList] = useState(false);
-  const arriving: MissionByDate = {};
-  const leaving: MissionByDate = {};
+  const [missions, setMissions] = useState<Mission | null>(null);
 
   const handleDisplayList = () => {
     setDisplayList(true);
@@ -15,12 +18,34 @@ const Home = () => {
     setDisplayList(false);
   };
 
+  useEffect(() => {
+    const fetchMissions = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/missions');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const missions = await response.json();
+        setMissions(missions);
+      } catch (error) {
+        console.error('Failed to fetch missions:', error);
+      }
+    };
+
+    fetchMissions();
+  }, []);
+
+  if (!missions) {
+    return <div>Loading...</div>;
+  }
+  const { arrivingBloomers, leavingBloomers } = missions;
+
   return (
     <>
       {displayList ? (
         <LeavingArrivingBloomers
-          arrivingBloomers={arriving}
-          leavingBloomers={leaving}
+          arrivingBloomers={arrivingBloomers}
+          leavingBloomers={leavingBloomers}
           closeList={handleCloseList}
         />
       ) : (
