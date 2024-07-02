@@ -49,7 +49,11 @@ const Home = () => {
           closeList={handleCloseList}
         />
       ) : (
-        <button className="buttonDisplayList" onClick={handleDisplayList}>
+        <button
+          className="buttonDisplayList"
+          onClick={handleDisplayList}
+          data-testid="buttonDisplayList"
+        >
           Afficher la liste des bloomers
         </button>
       )}
