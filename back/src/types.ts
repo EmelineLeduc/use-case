@@ -11,7 +11,7 @@ export type MissionInfo = {
 export type MissionByDate = {
   [key: string]: MissionInfo[];
 };
-interface Freelance {
+export interface Freelance {
   id: string;
   firstname: string;
   lastname: string;

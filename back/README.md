@@ -10,6 +10,17 @@ To get started with this project, clone the repository and install the dependenc
 npm install
 ```
 
+## Airtable Integration
+
+This project uses Airtable as a database to store and manage missions. To integrate Airtable, you need to add your Airtable API key and Base ID as environment variables. Create a `.env` file in the root directory and add the following lines:
+
+```plaintext
+AIRTABLE_API_KEY=your_airtable_api_key
+AIRTABLE_BASE_ID=your_airtable_base_id
+```
+
+Replace `your_airtable_api_key` and `your_airtable_base_id` with your actual Airtable API key and Base ID.
+
 ## Running the Project
 You can run the project in development mode with live reloading:
 
