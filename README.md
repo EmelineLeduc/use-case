@@ -2,13 +2,13 @@
 This project is a web application designed to display two types of freelancers, referred to as "bloomers": incoming bloomers and outgoing bloomers, based on their mission dates. The project is split into two main parts: the backend, developed with Express.js, and the frontend, developed with React.js.
 
 ## Technologies Used
-Frontend: React.js
-Backend: Express.js
-Database: Airtable (optional)
+- Frontend: React.js
+- Backend: Express.js
+- Database: Airtable (optional)
 
 ## Features
-Bloomers Visualization: The `LeavingArrivingBloomers` component displays incoming and outgoing freelancers based on the current date up to the end of the next month.
-Date Filtering: Mission data are filtered to display freelancers based on their arrival (beginDate) and departure (endDate) dates.
+- Bloomers Visualization: The `LeavingArrivingBloomers` component displays incoming and outgoing freelancers based on the current date up to the end of the next month.
+- Date Filtering: Mission data are filtered to display freelancers based on their arrival (beginDate) and departure (endDate) dates.
 
 ## Installation and Execution
 ### Prerequisites
