@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { MissionByDate } from '../types';
 import BloomerDateList from '../BloomerDateList';
 import './style.css';
@@ -32,13 +32,13 @@ const LeavingArrivingBloomers = ({
   const filteredBloomersByArrivingDate = filterBloomersByDate(arrivingBloomers);
   const filteredBloomersByLeavingDate = filterBloomersByDate(leavingBloomers);
 
-  const closeButton = () => {
+  const closeButton = useCallback(() => {
     setIsVisible(false);
     closeList();
-  };
+  }, [closeList]);
 
   if (!isVisible) {
-    return false;
+    return null;
   }
 
   return (

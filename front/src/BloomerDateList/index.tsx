@@ -20,12 +20,9 @@ const BloomerDateList = ({
     () => Object.values(bloomerDateList).flat().length,
     [bloomerDateList]
   );
-  const colorClass = useMemo(
-    () => (stateBloomer === 'arriving' ? 'greenText' : 'redText'),
-    [stateBloomer]
-  );
   const dates = useMemo(() => Object.keys(bloomerDateList), [bloomerDateList]);
   const lastDate = dates[dates.length - 1];
+  const colorClass = stateBloomer === 'arriving' ? 'greenText' : 'redText';
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import LeavingArrivingBloomers from '../LeavingArrivingBloomers';
 import { MissionByDate } from '../types';
 import './style.css';
@@ -11,12 +11,12 @@ const Home = () => {
   const [displayList, setDisplayList] = useState(false);
   const [missions, setMissions] = useState<Mission | null>(null);
 
-  const handleDisplayList = () => {
+  const handleDisplayList = useCallback(() => {
     setDisplayList(true);
-  };
-  const handleCloseList = () => {
+  }, []);
+  const handleCloseList = useCallback(() => {
     setDisplayList(false);
-  };
+  }, []);
 
   useEffect(() => {
     const fetchMissions = async () => {
